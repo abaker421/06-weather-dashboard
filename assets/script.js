@@ -14,10 +14,11 @@
 
 var apiKey= '78a9d52ef2c9fc05aca064bff26c1e28'
 // var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q='+userCity+'&units=imperial&appid='+apiKey
-var searchHistory=[] //array for search history display
+var searchHistory= [] //array for search history display
 var searchButton = document.getElementById('search-button')
 
 displaySearchHistory()
+fiveDayForecast()
 
 function searchCity(){
     var cityInput=document.getElementById('user-text-box').value.trim()
@@ -36,6 +37,7 @@ function searchCity(){
 } //pulls current weather data for the user entered city
 
 function addSearchHistory(cityName){
+//  var previousHistory= getLocalStorage('searchHistory')
  searchHistory.push(cityName) //adds search to searchHistory array
  localStorage.setItem('searchHistory', JSON.stringify(searchHistory)) //sets searchHistory to localStorage
 }
@@ -76,13 +78,13 @@ function displayWeather(data) {
  document.getElementById('current-wind').innerText='Wind: '+cityWind+' mph'
 }
 
-// fiveDayForecast(){
-//     for (i=0;i<5;i++) {
-//     document.getElementById('five-day-'+i)
-        
-//     }}
+function fiveDayForecast() {
+
+ for (i=0;i<5;i++) {
+    var fiveDayForecastCurrent = document.getElementById('five-day-'+i)
+    console.log(fiveDayForecastCurrent)
+    }
+}
 
 
 searchButton.addEventListener('click', searchCity)
-
-var clearButton = document.getElementById('clear-button')
