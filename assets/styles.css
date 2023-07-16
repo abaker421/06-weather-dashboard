@@ -1,3 +1,33 @@
 * {
     background: grey;
 }
+
+#left-side {
+ display: flex;
+ flex-direction:column;
+}
+
+#right-side {
+ display: flex;
+ flex-direction:column;
+}
+
+#city-search-section {
+ display: flex;
+ flex-direction:column;
+}
+
+#search-box{
+    display: flex;
+    flex-direction: row;
+}
+
+#five-day-forecast{
+ display: flex;
+ flex-direction: row;
+}
+
+#left-right-divide{
+    display: flex;
+    flex-direction: row;
+}

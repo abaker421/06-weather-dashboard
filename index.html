@@ -10,18 +10,25 @@
 
  <h1>Weather Dashboard</h1>
 
+<div id="left-right-divide">
+<div id="left-side">
  <section id="city-search-section">
   <h2>Search for a city:</h2>
+  <div id="search-box">
   <input type="text" name="city_name" id="city-name-text-box" placeholder="Enter a city name">
   <button>Search</button>
+</div>
  </section>
+ 
 
  <section id="previous-search-section">
  <h2>Previous Searches:</h2>
  <ul></ul>
 
  </section>
+</div>
 
+<div id="right-side">
  <section id="selected-city-main" class="hidden">
   <div id="current-day-display">
     <h2>City Name</h2>
@@ -29,36 +36,36 @@
     <p>Wind</p>
     <p>Humidity</p>
   </div>
-  <div id="5-day-forecast">
-     <card id="5-day-1">
+  <div id="five-day-forecast">
+     <card id="five-day-1" class="five-day-card">
         <p>Date</p>
         <p>Icon</p>
         <p>Temp</p>
         <p>Wind</p>
         <p>Humidity</p>
      </card>
-     <card id="5-day-2">
+     <card id="five-day-2" class="five-day-card">
         <p>Date</p>
         <p>Icon</p>
         <p>Temp</p>
         <p>Wind</p>
         <p>Humidity</p>
      </card>
-     <card id="5-day-3">
+     <card id="five-day-3" class="five-day-card">
         <p>Date</p>
         <p>Icon</p>
         <p>Temp</p>
         <p>Wind</p>
         <p>Humidity</p>
      </card>
-     <card id="5-day-4">
+     <card id="five-day-4" class="five-day-card">
         <p>Date</p>
         <p>Icon</p>
         <p>Temp</p>
         <p>Wind</p>
         <p>Humidity</p>
      </card>
-     <card id="5-day-5">
+     <card id="five-day-5" class="five-day-card">
         <p>Date</p>
         <p>Icon</p>
         <p>Temp</p>
@@ -66,9 +73,9 @@
         <p>Humidity</p>
      </card>
   </div>
-
  </section>
-
+</div>
+</div>
  <script src="assets/script.js"></script>
 </body>
 </html>
