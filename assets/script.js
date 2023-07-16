@@ -28,6 +28,7 @@ function searchCity(){
         console.log(data)
         displayWeather(data)
         addSearchHistory(cityInput)
+        displaySearchHistory()
       })
       .catch(error => {
         console.error('Error:', error)
@@ -41,16 +42,21 @@ function addSearchHistory(cityName){
 
 function displaySearchHistory (){
     var searchHistoryList = document.getElementById('search-history-list')
-    // searchHistoryList.innerText=''
+    searchHistoryList.innerHTML = ''
+    var searchHistory= getLocalStorage('searchHistory')
 
-    var searchHistory= getLocalStorage('searchHistory') || []
-
-    for (var i=0;i<searchHistory.length;i++) {
-        var city= searchHistory[i]
-        var li= document.createElement('li')
-        li.textContent = city
-        searchHistoryList.appendChild(li)
+    if (searchHistory) {
+        searchHistory.reverse()
+        for (var i = 0; i < searchHistory.length; i++) {
+          var city = searchHistory[i]
+          var li = document.createElement('li')
+          li.textContent = city
+          li.addEventListener('click', function () {
+            searchCity(this.textContent)
+          })
+          searchHistoryList.appendChild(li)
     }
+  }
 }
 
 function getLocalStorage(searchHistory) {
@@ -77,5 +83,6 @@ function displayWeather(data) {
 //     }}
 
 
-
 searchButton.addEventListener('click', searchCity)
+
+var clearButton = document.getElementById('clear-button')
