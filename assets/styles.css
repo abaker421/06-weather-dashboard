@@ -1,5 +1,5 @@
-* {
-    background: grey;
+body {
+    background: lightgrey;
 }
 
 #left-side {
@@ -10,16 +10,12 @@
 #right-side {
  display: flex;
  flex-direction:column;
+ margin-left: 100px;
 }
 
 #city-search-section {
  display: flex;
  flex-direction:column;
-}
-
-#search-box{
-    display: flex;
-    flex-direction: row;
 }
 
 #five-day-forecast{
@@ -31,3 +27,44 @@
     display: flex;
     flex-direction: row;
 }
+
+#previous-search-section{
+ border-top: 1px solid black;
+ margin-top: 20px;
+}
+
+#current-day-display{
+    border: 2px solid black;
+    width: 1165px; 
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+#search-button{
+    margin-top: 5px;
+    background: lightblue;
+}
+
+.five-day-card{
+    border: 1px solid black;
+    margin-right: 20px;
+    width: 200px;
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 5px;
+    background: darkblue;
+    color: white;
+}
+
+h1{
+ padding: 20px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ background: darkblue;
+ margin: 0px;
+}
+
+
+
