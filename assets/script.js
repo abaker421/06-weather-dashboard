@@ -17,16 +17,17 @@ var apiKey= '78a9d52ef2c9fc05aca064bff26c1e28'
 var searchHistory=[] //array for search history display
 var searchButton = document.getElementById('search-button')
 
-
+displaySearchHistory()
 
 function searchCity(){
-    var cityInput=document.getElementById('user-text-box')
+    var cityInput=document.getElementById('user-text-box').value.trim()
     var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Atlanta&units=imperial&appid='+apiKey
     fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
         console.log(data)
         displayWeather(data)
+        addSearchHistory(cityInput)
       })
       .catch(error => {
         console.error('Error:', error)
@@ -35,7 +36,26 @@ function searchCity(){
 
 function addSearchHistory(cityName){
  searchHistory.push(cityName) //adds search to searchHistory array
- setLocalStorage('searchHistory', searchHistory) //sets searchHistory to localStorage
+ localStorage.setItem('searchHistory', JSON.stringify(searchHistory)) //sets searchHistory to localStorage
+}
+
+function displaySearchHistory (){
+    var searchHistoryList = document.getElementById('search-history-list')
+    // searchHistoryList.innerText=''
+
+    var searchHistory= getLocalStorage('searchHistory') || []
+
+    for (var i=0;i<searchHistory.length;i++) {
+        var city= searchHistory[i]
+        var li= document.createElement('li')
+        li.textContent = city
+        searchHistoryList.appendChild(li)
+    }
+}
+
+function getLocalStorage(searchHistory) {
+    var data= localStorage.getItem(searchHistory)
+    return JSON.parse(data)
 }
 
 function displayWeather(data) {
@@ -49,6 +69,13 @@ function displayWeather(data) {
  document.getElementById('current-humidity').innerText='Humidity: '+cityHumidity+ '%'
  document.getElementById('current-wind').innerText='Wind: '+cityWind+' mph'
 }
+
+// fiveDayForecast(){
+//     for (i=0;i<5;i++) {
+//     document.getElementById('five-day-'+i)
+        
+//     }}
+
 
 
 searchButton.addEventListener('click', searchCity)
