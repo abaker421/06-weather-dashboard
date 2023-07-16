@@ -13,15 +13,40 @@
 // THEN I am again presented with current and future conditions for that city
 
 var apiKey= '78a9d52ef2c9fc05aca064bff26c1e28'
+// var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q='+userCity+'&units=imperial&appid='+apiKey
+var searchHistory=[] //array for search history display
 
-var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Atlanta&units=imperial&appid='+apiKey
 
 
-fetch(apiUrl)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data)
-  })
-  .catch(error => {
-    console.error('Error:', error)
-  })
+function searchCity(){
+    var cityInput=document.getElementById('user-text-box')
+    var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Atlanta&units=imperial&appid='+apiKey
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+      })
+      .catch(error => {
+        console.error('Error:', error)
+      })
+} //pulls current weather data for the user entered city
+
+function addSearchHistory(cityName){
+ searchHistory.push(cityName) //adds search to searchHistory array
+ setLocalStorage('searchHistory', searchHistory) //sets searchHistory to localStorage
+}
+
+
+
+function weatherParse(){
+
+} //parses the data pulled from the fetch request and formats it into variables
+
+function setInformation(){} //sets variables into their proper fields non the page after being parsed into variables
+
+function displayForecast(){} //removes hidden class from weather data sections
+
+function saveSearch(){} //sets searched city into local storage, runs when save button is clicked
+
+function displayLastSearch(){} //displays last seacrhes saved in localStorage, runs on page launch
+
