@@ -17,6 +17,7 @@ var apiKey= '78a9d52ef2c9fc05aca064bff26c1e28'
 var searchHistory= [] //array for search history display
 var searchButton = document.getElementById('search-button')
 
+
 displaySearchHistory()
 fiveDayForecast()
 
@@ -46,6 +47,7 @@ function displaySearchHistory (){
     var searchHistoryList = document.getElementById('search-history-list')
     searchHistoryList.innerHTML = ''
     var searchHistory= getLocalStorage('searchHistory')
+    
 
     if (searchHistory) {
         searchHistory.reverse()
@@ -54,7 +56,8 @@ function displaySearchHistory (){
           var li = document.createElement('li')
           li.textContent = city
           li.addEventListener('click', function () {
-            searchCity(this.textContent)
+          document.getElementById('user-text-box').value= this.textContent
+          searchCity(this.textContent)
           })
           searchHistoryList.appendChild(li)
     }
@@ -83,6 +86,10 @@ function fiveDayForecast() {
  for (i=0;i<5;i++) {
     var fiveDayForecastCurrent = document.getElementById('five-day-'+i)
     console.log(fiveDayForecastCurrent)
+    
+    //add card element into document.getElementById('five-day-forecast'), add card class
+    //add value
+    //append into 
     }
 }
 
