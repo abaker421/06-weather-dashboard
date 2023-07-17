@@ -28,13 +28,13 @@ function searchCity(){
     fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        console.log(data) //I left this in for knowledgeable users to have access to it
         displayWeather(data)
         weatherData= data
         addSearchHistory(cityInput)
         displaySearchHistory()
-        displayWeatherScreen()
         fiveDayForecast()
+        displayWeatherScreen()
       })
       .catch(error => {
         console.error('Error:', error)
@@ -42,7 +42,7 @@ function searchCity(){
 } //pulls current weather data for the user entered city
 
 function displayWeatherScreen(){
-    document.getElementById('selected-city-main').classList.remove('hidden')
+  document.getElementById('selected-city-main').classList.remove('hidden')
 }
 
 function addSearchHistory(cityName){
@@ -72,18 +72,18 @@ function displaySearchHistory (){
 }
 
 function getLocalStorage(searchHistory) {
-    var data= localStorage.getItem(searchHistory)
-    return JSON.parse(data)
+  var data= localStorage.getItem(searchHistory)
+  return JSON.parse(data)
 }
 
 function displayWeather(data) {
-    var cityName= data.city.name
-    var cityTemp= data.list[0].main.temp
-    var cityHumidity =data.list[0].main.humidity
-    var cityWind= data.list[0].wind.speed
-    var cityIcon= data.list[0].weather[0].icon
+  var cityName= data.city.name
+  var cityTemp= data.list[0].main.temp
+  var cityHumidity =data.list[0].main.humidity
+  var cityWind= data.list[0].wind.speed
+  var cityIcon= data.list[0].weather[0].icon
 
-document.getElementById('current-icon').setAttribute("src","https://openweathermap.org/img/wn/"+cityIcon+"@2x.png")
+ document.getElementById('current-icon').setAttribute("src","https://openweathermap.org/img/wn/"+cityIcon+"@2x.png")
  document.getElementById('current-name').innerText='City: '+cityName
  document.getElementById('current-temp').innerText= 'Temperature: '+cityTemp+" F"
  document.getElementById('current-humidity').innerText='Humidity: '+cityHumidity+ '%'

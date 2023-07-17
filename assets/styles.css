@@ -3,24 +3,24 @@ body {
 }
 
 #left-side {
- display: flex;
- flex-direction:column;
+   display: flex;
+   flex-direction:column;
 }
 
 #right-side {
- display: flex;
- flex-direction:column;
- margin-left: 100px;
+   display: flex;
+   flex-direction:column;
+   margin-left: 100px;
 }
 
 #city-search-section {
- display: flex;
- flex-direction:column;
+   display: flex;
+   flex-direction:column;
 }
 
 #five-day-forecast{
- display: flex;
- flex-direction: row;
+   display: flex;
+   flex-direction: row;
 }
 
 #left-right-divide{
