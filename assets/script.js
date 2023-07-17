@@ -46,8 +46,8 @@ function displayWeatherScreen(){
   document.getElementById('selected-city-main').classList.remove('hidden')
 }
 
-function addSearchHistory(cityName1){
- searchHistory.push(cityName1) //adds search to searchHistory array
+function addSearchHistory(cityName){
+ searchHistory.push(cityName) //adds search to searchHistory array
  localStorage.setItem('searchHistory', JSON.stringify(searchHistory)) //sets searchHistory to localStorage
 }
 

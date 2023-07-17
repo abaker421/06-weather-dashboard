@@ -46,6 +46,8 @@ body {
     align-items: center;
 }
 
+
+
 #current-icon {
     width:150px;
 }
@@ -58,6 +60,7 @@ body {
 #search-history-list li {
     color: blue;
     list-style-type: none;
+    margin: 5px;
   }
 
 #search-history-list li:hover {
