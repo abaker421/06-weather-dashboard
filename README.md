@@ -1,4 +1,4 @@
-# 04-javascript-coding-quiz-challenge
+# 06-weather-dashboard
 
 ## Project description
 
