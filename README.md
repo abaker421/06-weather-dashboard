@@ -17,6 +17,8 @@ Open your web browser and visit "https://bakeradm6.github.io/06-weather-dashboar
 -Current weather is displayed in a large box, including temp, wind, humidity, the name of the city, and a weather icon
 -Generates a 5 day forecast which shows the same information as well as the date for the next five days
 -Recently searched section, with the ability to click on a recent search to see its results
+-If an unrecognized city is entered, an alert pops up
+-If no text is in the box, an alert pops up
 
 ## Documentation
 
