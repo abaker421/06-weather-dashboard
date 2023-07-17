@@ -67,5 +67,7 @@ h1{
  color: lightgrey;
 }
 
-
+.hidden{
+    display: none;
+}
 
