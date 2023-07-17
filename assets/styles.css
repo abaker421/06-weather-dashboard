@@ -46,6 +46,11 @@ body {
     background: lightblue;
 }
 
+#search-history-list li {
+    color: blue;
+    list-style-type: none;
+  }
+
 .five-day-card{
     border: 1px solid black;
     margin-right: 20px;
