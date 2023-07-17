@@ -57,7 +57,7 @@ function displaySearchHistory (){
     
 
     if (searchHistory) {
-        searchHistory.reverse()
+        searchHistory.reverse() //if data is there, it is presented in reverse
         for (var i = 0; i < searchHistory.length; i++) {
           var city = searchHistory[i]
           var li = document.createElement('li')
@@ -91,7 +91,7 @@ document.getElementById('current-icon').setAttribute("src","https://openweatherm
 }
 
 function fiveDayForecast() {
-    var counter = 0;
+    var counter = 0
     for (var i = 1; i < weatherData.list.length; i += 8) {
       var fiveDayForecastCurrent = document.getElementById('five-day-' + counter)
       var fiveDayForecast = weatherData.list[i]

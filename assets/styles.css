@@ -39,6 +39,14 @@ body {
     padding: 10px;
     border-radius: 5px;
     margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#current-icon {
+    width:150px;
 }
 
 #search-button{
@@ -50,6 +58,11 @@ body {
     color: blue;
     list-style-type: none;
   }
+
+#main-display-split {
+    display: flex;
+    flex-direction: column;
+}
 
 .five-day-card{
     border: 1px solid black;
