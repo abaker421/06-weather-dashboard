@@ -46,7 +46,6 @@ function displayWeatherScreen(){
 }
 
 function addSearchHistory(cityName){
-//  var previousHistory= getLocalStorage('searchHistory')
  searchHistory.push(cityName) //adds search to searchHistory array
  localStorage.setItem('searchHistory', JSON.stringify(searchHistory)) //sets searchHistory to localStorage
 }
@@ -92,21 +91,23 @@ document.getElementById('current-icon').setAttribute("src","https://openweatherm
 }
 
 function fiveDayForecast() {
-    for (var i = 0; i < 5; i++) {
-      var fiveDayForecastCurrent = document.getElementById('five-day-' + i)
-      var fiveDayForecast = weatherData.list.slice(1, 6)//exclude current day, day 1-5 TODO modify so it pulls different days, is currently pulling next in the array which is the same day in 3 hour intervals
-      var date= new Date(fiveDayForecast[i].dt * 1000) //I found this online, it uses the .dt and later .toDateString to compilte a date from the new date object created here
-      var icon = fiveDayForecast[i].weather[0].icon
-      var temp = fiveDayForecast[i].main.temp
-      var wind = fiveDayForecast[i].wind.speed
-      var humidity = fiveDayForecast[i].main.humidity
-
-      
-      fiveDayForecastCurrent.querySelector('p.date').innerText= date.toDateString()
-      fiveDayForecastCurrent.querySelector('img').setAttribute("src", 'https://openweathermap.org/img/wn/'+icon+'@2x.png')
+    var counter = 0;
+    for (var i = 1; i < weatherData.list.length; i += 8) {
+      var fiveDayForecastCurrent = document.getElementById('five-day-' + counter)
+      var fiveDayForecast = weatherData.list[i]
+      var date = new Date(fiveDayForecast.dt * 1000)
+      var icon = fiveDayForecast.weather[0].icon
+      var temp = fiveDayForecast.main.temp
+      var wind = fiveDayForecast.wind.speed
+      var humidity = fiveDayForecast.main.humidity
+  
+      fiveDayForecastCurrent.querySelector('p.date').innerText = date.toDateString()
+      fiveDayForecastCurrent.querySelector('img').setAttribute("src", 'https://openweathermap.org/img/wn/' + icon + '@2x.png')
       fiveDayForecastCurrent.querySelector('p.temp').innerText = 'Temp: ' + temp + ' F'
       fiveDayForecastCurrent.querySelector('p.wind').innerText = 'Wind: ' + wind + ' mph'
       fiveDayForecastCurrent.querySelector('p.humidity').innerText = 'Humidity: ' + humidity + '%'
+  
+      counter++
     }
   }
 
