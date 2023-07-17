@@ -36,8 +36,9 @@ function searchCity(){
         fiveDayForecast()
         displayWeatherScreen()
       })
-      .catch(error => {
-        console.error('Error:', error)
+       .catch(error => {
+       console.error('Error:', error)
+       alert('Enter a valid city name')
       })
 } //pulls current weather data for the user entered city
 
@@ -83,14 +84,13 @@ function displayWeather(data) {
   var cityWind= data.list[0].wind.speed
   var cityIcon= data.list[0].weather[0].icon
   var date = new Date(data.list[0].dt * 1000)
-  console.log(date)
 
- document.getElementById('current-date').innerText= date.toDateString()
- document.getElementById('current-icon').setAttribute("src","https://openweathermap.org/img/wn/"+cityIcon+"@2x.png")
- document.getElementById('current-name').innerText='City: '+cityName
- document.getElementById('current-temp').innerText= 'Temperature: '+cityTemp+" F"
- document.getElementById('current-humidity').innerText='Humidity: '+cityHumidity+ '%'
- document.getElementById('current-wind').innerText='Wind: '+cityWind+' mph'
+  document.getElementById('current-date').innerText= date.toDateString()
+  document.getElementById('current-icon').setAttribute("src","https://openweathermap.org/img/wn/"+cityIcon+"@2x.png")
+  document.getElementById('current-name').innerText='City: '+cityName
+  document.getElementById('current-temp').innerText= 'Temperature: '+cityTemp+" F"
+  document.getElementById('current-humidity').innerText='Humidity: '+cityHumidity+ '%'
+  document.getElementById('current-wind').innerText='Wind: '+cityWind+' mph'
 }
 
 function fiveDayForecast() {
