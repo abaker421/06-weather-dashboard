@@ -92,7 +92,7 @@ document.getElementById('current-icon').setAttribute("src","https://openweatherm
 
 function fiveDayForecast() {
     var counter = 0
-    for (var i = 1; i < weatherData.list.length; i += 8) {
+    for (var i = 5; i < weatherData.list.length; i += 8) {
       var fiveDayForecastCurrent = document.getElementById('five-day-' + counter)
       var fiveDayForecast = weatherData.list[i]
       var date = new Date(fiveDayForecast.dt * 1000)
