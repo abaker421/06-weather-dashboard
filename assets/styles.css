@@ -59,6 +59,10 @@ body {
     list-style-type: none;
   }
 
+#search-history-list li:hover {
+    cursor: pointer;
+}
+
 #main-display-split {
     display: flex;
     flex-direction: column;
