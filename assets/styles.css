@@ -68,6 +68,10 @@ body {
     flex-direction: column;
 }
 
+#current-date{
+    font-size: 200%;
+}
+
 .five-day-card{
     border: 1px solid black;
     margin-right: 20px;

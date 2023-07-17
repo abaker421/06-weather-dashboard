@@ -82,7 +82,10 @@ function displayWeather(data) {
   var cityHumidity =data.list[0].main.humidity
   var cityWind= data.list[0].wind.speed
   var cityIcon= data.list[0].weather[0].icon
+  var date = new Date(data.list[0].dt * 1000)
+  console.log(date)
 
+ document.getElementById('current-date').innerText= date.toDateString()
  document.getElementById('current-icon').setAttribute("src","https://openweathermap.org/img/wn/"+cityIcon+"@2x.png")
  document.getElementById('current-name').innerText='City: '+cityName
  document.getElementById('current-temp').innerText= 'Temperature: '+cityTemp+" F"
@@ -109,7 +112,7 @@ function fiveDayForecast() {
   
       counter++
     }
-  }
+}
 
 
 searchButton.addEventListener('click', searchCity)
