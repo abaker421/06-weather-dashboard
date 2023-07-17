@@ -13,24 +13,27 @@
 // THEN I am again presented with current and future conditions for that city
 
 var apiKey= '78a9d52ef2c9fc05aca064bff26c1e28'
-// var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q='+userCity+'&units=imperial&appid='+apiKey
-var searchHistory= [] //array for search history display
+var searchHistory= JSON.parse(localStorage.getItem('searchHistory')) || []
 var searchButton = document.getElementById('search-button')
 
 
 displaySearchHistory()
-fiveDayForecast()
 
 function searchCity(){
     var cityInput=document.getElementById('user-text-box').value.trim()
-    var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=Atlanta&units=imperial&appid='+apiKey
+    if (cityInput==''){
+        alert('Please enter a city name')
+    }
+    var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q='+cityInput+'&units=imperial&appid='+apiKey
     fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
         console.log(data)
         displayWeather(data)
+        weatherData= data
         addSearchHistory(cityInput)
         displaySearchHistory()
+        fiveDayForecast()
       })
       .catch(error => {
         console.error('Error:', error)
@@ -56,7 +59,7 @@ function displaySearchHistory (){
           var li = document.createElement('li')
           li.textContent = city
           li.addEventListener('click', function () {
-          document.getElementById('user-text-box').value= this.textContent
+          document.getElementById('user-text-box').value= this.textContent //this enters the correct city back into the previous search box instead of whatever was in there when the previous option was clicked
           searchCity(this.textContent)
           })
           searchHistoryList.appendChild(li)
@@ -82,16 +85,22 @@ function displayWeather(data) {
 }
 
 function fiveDayForecast() {
+    for (var i = 0; i < 5; i++) {
+      var fiveDayForecastCurrent = document.getElementById('five-day-' + i)
+      var fiveDayForecast = weatherData.list.slice(1, 6)//exclude current day, day 1-5 TODO modify so it pulls different days, is currently pulling next in the array which is the same day in 3 hour intervals
+      var icon = fiveDayForecast[i].weather[0].icon
+      var temp = fiveDayForecast[i].main.temp
+      var wind = fiveDayForecast[i].wind.speed
+      var humidity = fiveDayForecast[i].main.humidity
 
- for (i=0;i<5;i++) {
-    var fiveDayForecastCurrent = document.getElementById('five-day-'+i)
-    console.log(fiveDayForecastCurrent)
-    
-    //add card element into document.getElementById('five-day-forecast'), add card class
-    //add value
-    //append into 
+      
+  
+      fiveDayForecastCurrent.querySelector('img').setAttribute("src", 'https://openweathermap.org/img/wn/'+icon+'@2x.png')
+      fiveDayForecastCurrent.querySelector('p.temp').innerText = 'Temp: ' + temp + ' F'
+      fiveDayForecastCurrent.querySelector('p.wind').innerText = 'Wind: ' + wind + ' mph'
+      fiveDayForecastCurrent.querySelector('p.humidity').innerText = 'Humidity: ' + humidity + '%'
     }
-}
+  }
 
 
 searchButton.addEventListener('click', searchCity)
